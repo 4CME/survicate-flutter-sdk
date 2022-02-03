@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 
-import Survicate
+import SurvicateSdk
 
 public class SwiftSurvicateFlutterSdkPlugin: NSObject, FlutterPlugin, SurvicateDelegate {
     
