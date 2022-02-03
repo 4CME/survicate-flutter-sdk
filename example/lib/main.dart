@@ -13,13 +13,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  SurvicateFlutterSdk survicateFlutterSdk= SurvicateFlutterSdk();
-  String? surveyIdDisplayed;
-  String? surveyIdAnswered;
-  num? questionIdAnswered;
-  SurvicateAnswerModel? answer;
-  String? surveyIdClosed;
-  String? surveyIdCompleted;
+  SurvicateFlutterSdk survicateFlutterSdk;
+  String surveyIdDisplayed;
+  String surveyIdAnswered;
+  num questionIdAnswered;
+  SurvicateAnswerModel answer;
+  String surveyIdClosed;
+  String surveyIdCompleted;
+
+  @override
+  void initState() {
+    super.initState();
+    survicateFlutterSdk ??= SurvicateFlutterSdk();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +41,7 @@ class _MyAppState extends State<MyApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                ElevatedButton(
+                RaisedButton(
                   onPressed: () {
                     survicateFlutterSdk.invokeEvent('SURVEY');
                   },
@@ -44,13 +50,13 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(
                   height: 5.0,
                 ),
-                ElevatedButton(
+                RaisedButton(
                   onPressed: () {
                     survicateFlutterSdk.enterScreen('SCREEN');
                   },
                   child: Text('Enter screen SCREEN'),
                 ),
-                ElevatedButton(
+                RaisedButton(
                   onPressed: () {
                     survicateFlutterSdk.leaveScreen('SCREEN');
                   },
@@ -59,7 +65,7 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(
                   height: 5.0,
                 ),
-                ElevatedButton(
+                RaisedButton(
                   onPressed: () {
                     survicateFlutterSdk.setUserTraits(
                         UserTraitsModel(userId: '1', firstName: 'USER'));
@@ -69,7 +75,7 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(
                   height: 5.0,
                 ),
-                ElevatedButton(
+                RaisedButton(
                   onPressed: () {
                     setState(() {
                       surveyIdDisplayed = null;
@@ -86,7 +92,7 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(
                   height: 5.0,
                 ),
-                ElevatedButton(
+                RaisedButton(
                   onPressed: () {
                     setState(() {
                       surveyIdDisplayed = null;
@@ -123,7 +129,7 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(
                   height: 5.0,
                 ),
-                ElevatedButton(
+                RaisedButton(
                   onPressed: () {
                     setState(() {
                       surveyIdDisplayed = null;

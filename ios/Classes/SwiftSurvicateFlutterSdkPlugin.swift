@@ -1,27 +1,23 @@
 import Flutter
 import UIKit
 
-import Survicate
+import SurvicateSdk
 
 public class SwiftSurvicateFlutterSdkPlugin: NSObject, FlutterPlugin {
     private var survicateDelegate: FlutterSurvicateDelegate?
 
     class FlutterChannel: NSObject {
         static let shared: FlutterChannel = FlutterChannel()
-
         var channel: FlutterMethodChannel?
-
         private override init() {}
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "survicate_flutter_sdk", binaryMessenger: registrar.messenger())
         let instance = SwiftSurvicateFlutterSdkPlugin()
-
         instance.survicateDelegate = FlutterSurvicateDelegate(channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
         FlutterChannel.shared.channel = channel
-
         SurvicateSdk.shared.initialize()
     }
     
